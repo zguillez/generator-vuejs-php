@@ -1,7 +1,7 @@
 {
   "name": "generator-vuejs-php",
   "version": "0.0.0",
-  "description": "",
+  "description": "Yeoman generator for Web development with Vue.js (frontend) and Slim Framework (backend)",
   "homepage": "",
   "author": {
     "name": "Guillermo de la Iglesia",

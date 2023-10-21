@@ -1,5 +1,6 @@
-# generator-vuejs-php [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> 
+# generator-vuejs-php
+
+>
 
 ## Installation
 
@@ -18,21 +19,11 @@ yo vuejs-php
 
 ## Getting To Know Yeoman
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+* Yeoman has a heart of gold.
+* Yeoman is a person with feelings and opinions, but is very easy to work with.
+* Yeoman can be too opinionated at times but is easily convinced not to be.
+* Feel free to [learn more about Yeoman](http://yeoman.io/).
 
 ## License
 
- © [Guillermo de la Iglesia]()
-
-
-[npm-image]: https://badge.fury.io/js/generator-vuejs-php.svg
-[npm-url]: https://npmjs.org/package/generator-vuejs-php
-[travis-image]: https://travis-ci.com//generator-vuejs-php.svg?branch=master
-[travis-url]: https://travis-ci.com//generator-vuejs-php
-[daviddm-image]: https://david-dm.org//generator-vuejs-php.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org//generator-vuejs-php
-[coveralls-image]: https://coveralls.io/repos//generator-vuejs-php/badge.svg
-[coveralls-url]: https://coveralls.io/r//generator-vuejs-php
+© [Guillermo de la Iglesia]()
