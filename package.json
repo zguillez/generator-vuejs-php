@@ -13,8 +13,16 @@
   ],
   "main": "generators/index.js",
   "keywords": [
-    "",
-    "yeoman-generator"
+    "yeoman-generator",
+    "Slim",
+    "Slimframework",
+    "Php",
+    "vue",
+    "vuejs",
+    "vue.js",
+    "frontend",
+    "backend",
+    "fullstack"
   ],
   "devDependencies": {
     "yeoman-test": "^1.7.0",
