@@ -22,7 +22,5 @@ module.exports = class extends Generator {
 
   install() {
     this.npmInstall();
-    //this.spawnCommandSync("npm", ["run", "init"]);
-    //console.log(chalk.green("=> Everything is ready!"));
   }
 };
