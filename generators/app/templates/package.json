@@ -24,7 +24,7 @@
     "clean:_": "find . -type f -name .DS_Store -exec rm -f {} \\;",
     "clean:staged": "lint-staged",
     "init": "npm-run-all init:*",
-    "init:1": "mv _/husky .husky && npm pkg set scripts.prepare=\"husky install\"",
+    "init:1": "mv _/husky .husky && git init && npm pkg set scripts.prepare=\"husky install\"",
     "init:2": "mv _/client client && mv client/eslintrc.txt client/.eslintrc.cjs",
     "init:3": "mv _/server server && mv server/htaccess.txt server/.htaccess",
     "init:4": "curl -sS https://getcomposer.org/installer | php -- --install-dir=./ --filename=composer.phar && chmod +x ./composer.phar",
