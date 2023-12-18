@@ -29,11 +29,10 @@ module.exports = class extends Generator {
       this.templatePath(`lintstagedrc.txt`),
       this.destinationPath(".lintstagedrc")
     );
-    this.fs.copy(
-      this.templatePath(`bash.txt`),
-      this.destinationPath("dist/.bash")
-    );
-    this.fs.copy(this.templatePath(`_`), this.destinationPath("_"));
+    this.fs.copy(this.templatePath(`client`), this.destinationPath("client"));
+    this.fs.copy(this.templatePath(`dist`), this.destinationPath("dist"));
+    this.fs.copy(this.templatePath(`husky`), this.destinationPath("husky"));
+    this.fs.copy(this.templatePath(`server`), this.destinationPath("server"));
   }
 
   install() {
