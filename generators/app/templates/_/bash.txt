@@ -1,0 +1,11 @@
+cd /var/www/vhosts/???.com/dev.???.com/
+find ./ -type d -exec chown ???:psaserv {} \;
+find ./ -type f -exec chown ???:psacln {} \;
+find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
+
+cd /var/www/vhosts/???.com/httpdocs/
+find ./ -type d -exec chown ???:psaserv {} \;
+find ./ -type f -exec chown ???:psacln {} \;
+find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;

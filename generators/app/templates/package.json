@@ -17,6 +17,10 @@
   ],
   "main": "index.js",
   "scripts": {
+    "deploy": "npm-run-all deploy:dev deploy:fix",
+    "deploy:dev": "npm-run-all build clean && cd dist && rsync -avz ./ root@*.*.*.*:/var/www/vhosts/???.com/dev.???.com/",
+    "deploy:fix": "ssh root@*.*.*.* 'sh /var/www/vhosts/???.com/dev.???.com/.bash'",
+    "deploy:pro": "npm-run-all build clean && cd dist && rsync -avz ./ root@*.*.*.*:/var/www/vhosts/???.com/httpdocs/",
     "build": "npm-run-all build:*",
     "build:client": "cd client && npm run build && rm -rf ../dist/index.html",
     "build:server": "cd server && cp -R .htaccess config.ini index.php services templates vendor ../dist",
