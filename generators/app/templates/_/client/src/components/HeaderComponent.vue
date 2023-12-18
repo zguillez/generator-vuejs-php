@@ -1,13 +1,13 @@
 <script setup>
-import {useI18nStore} from '@/stores/i18n.js';
+import { useI18nStore } from '@/stores/i18n.js'
 // -----------------------------------------------------------
-const i18n = useI18nStore();
+const i18n = useI18nStore()
 // -----------------------------------------------------------
 </script>
 <template>
   <header>
     <ul>
-      <li v-for="lang in i18n.languages">
+      <li v-for="(lang, index) in i18n.languages" :key="index">
         <a :class="lang===i18n.language?'active':''" href="#" @click="i18n.set(lang)" v-html="lang"></a>
       </li>
     </ul>

@@ -1,7 +1,7 @@
 <script setup>
-import {useI18nStore} from '@/stores/i18n.js';
+import { useI18nStore } from '@/stores/i18n.js'
 // -----------------------------------------------------------
-const i18n = useI18nStore();
+const i18n = useI18nStore()
 // -----------------------------------------------------------
 </script>
 <template>

@@ -1,5 +1,8 @@
 <script setup>
+import { useI18nStore } from '@/stores/i18n.js'
 import FooterComponent from '@/components/FooterComponent.vue';
+// -----------------------------------------------------------
+const i18n = useI18nStore()
 // -----------------------------------------------------------
 </script>
 <template>
@@ -8,7 +11,7 @@ import FooterComponent from '@/components/FooterComponent.vue';
       <div class="container content">
         <div class="row">
           <div class="col-12">
-            <h2>Sección 2</h2>
+            <h2>i18n._('Sección 2')</h2>
           </div>
         </div>
       </div>
