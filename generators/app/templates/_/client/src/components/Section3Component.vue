@@ -6,20 +6,18 @@ import HeaderComponent from '@/components/HeaderComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 // -----------------------------------------------------------
 const i18n = useI18nStore()
-const data = useDataStore()
-const data_ = computed(() => data.get('data', i18n.get()))
+const data = computed(() => useDataStore().get('section3', i18n.language))
 // -----------------------------------------------------------
 </script>
 <template>
   <section class="wrapper">
-    <HeaderComponent />
+    <HeaderComponent menu="2" />
     <div class="wrapper">
       <div class="container content">
         <div class="row">
           <div class="col-12">
-            <h2>i18n._('Sección 3')</h2>
-            <p>{{ data_.info }}</p>
-            <ul v-html="data_.html"></ul>
+            <h2>{{ i18n._('Sección 3') }}</h2>
+            <ul v-html="data.html"></ul>
           </div>
         </div>
       </div>

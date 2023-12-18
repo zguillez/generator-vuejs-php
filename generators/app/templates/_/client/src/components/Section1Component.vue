@@ -7,12 +7,12 @@ const i18n = useI18nStore()
 </script>
 <template>
   <section class="wrapper">
-    <HeaderComponent />
+    <HeaderComponent menu="1" />
     <div class="wrapper">
       <div class="container content">
         <div class="row">
           <div class="col-12">
-            <h1>i18n._('Sección 1')</h1>
+            <h1>{{ i18n._('Sección 1') }}</h1>
           </div>
         </div>
       </div>

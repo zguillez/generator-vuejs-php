@@ -1,5 +1,5 @@
 <script setup>
-import Section3Component from '@/components/Section2Component.vue'
+import Section3Component from '@/components/Section3Component.vue'
 </script>
 <template>
   <main class="container-fluid">

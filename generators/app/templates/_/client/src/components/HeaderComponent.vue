@@ -2,10 +2,19 @@
 import { useI18nStore } from '@/stores/i18n.js'
 // -----------------------------------------------------------
 const i18n = useI18nStore()
+const { menu } = defineProps(['menu'])
 // -----------------------------------------------------------
 </script>
 <template>
   <header>
+    <ul>
+      <li>
+        <a href="/" :class="(menu==='1')?'active':''">Home</a>
+      </li>
+      <li>
+        <a href="/page1" :class="(menu==='2')?'active':''">Page 1</a>
+      </li>
+    </ul>
     <ul>
       <li v-for="(lang, index) in i18n.languages" :key="index">
         <a :class="lang===i18n.language?'active':''" href="#" @click="i18n.set(lang)" v-html="lang"></a>
@@ -22,6 +31,9 @@ header {
   left: 0;
   width: 100vw;
   padding: 3vh 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background-color: $color2;
   @media (max-width: $mobile) {
     position: relative;
