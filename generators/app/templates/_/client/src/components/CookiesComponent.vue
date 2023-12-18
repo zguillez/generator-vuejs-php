@@ -1,99 +1,101 @@
 <script setup>
-import {ref, onMounted} from 'vue';
+import { ref, onMounted } from 'vue'
 //------------------------------------------------
-let cookies = ref(null);
-let analiticas = ref(true);
+const cookies = ref(null)
+const analiticas = ref(true)
+const gtm = defineProps(['gtm']);
+
 onMounted(() => {
-  cookies.value = new Cookies('GTM-KXNKDN9R');
-  cookies.value.init();
-});
+  cookies.value = new Cookies(gtm)
+  cookies.value.init()
+})
 
 //------------------------------------------------
 class Cookies {
   constructor(gtm) {
-    this._gtm = gtm;
-    this._cookiesAllowed = false;
+    this._gtm = gtm
+    this._cookiesAllowed = false
   }
 
   init() {
-    this._cookiesAllowed = localStorage.getItem('cookies') === 'true';
-    this.initAllowCookies();
+    this._cookiesAllowed = localStorage.getItem('cookies') === 'true'
+    this.initAllowCookies()
   }
 
   initAllowCookies() {
-    this._cookiesAllowed = document.cookie.includes('consent=1');
-    console.log(`[z][gdpr:${this._cookiesAllowed}]`);
-    this.askCookies(!this._cookiesAllowed, false);
+    this._cookiesAllowed = document.cookie.includes('consent=1')
+    console.log(`[z][gdpr:${this._cookiesAllowed}]`)
+    this.askCookies(!this._cookiesAllowed, false)
     if (this._cookiesAllowed) {
-      const cookies = document.cookie.split(';');
-      const gdpr = cookies.find(cookie => cookie.trim().startsWith('consent='));
-      const consent = gdpr ? gdpr.split('=')[1] : '00';
-      console.log(`[z][analytics:${consent[1]}]`);
-      analiticas.value = consent[1] === '1';
-      this.allowCookies(this._cookiesAllowed, consent, consent[1] === '1');
+      const cookies = document.cookie.split(';')
+      const gdpr = cookies.find(cookie => cookie.trim().startsWith('consent='))
+      const consent = gdpr ? gdpr.split('=')[1] : '00'
+      console.log(`[z][analytics:${consent[1]}]`)
+      analiticas.value = consent[1] === '1'
+      this.allowCookies(this._cookiesAllowed, consent, consent[1] === '1')
     }
   }
 
   initAllowCookiesClick() {
-    this.allowCookies(true, '', analiticas.value);
+    this.allowCookies(true, '', analiticas.value)
   }
 
   initAllowAllCookiesClick() {
-    this.allowCookies(true, '', true);
+    this.allowCookies(true, '', true)
   }
 
   initDisallowAllCookiesClick() {
-    this.allowCookies(true, '', false);
+    this.allowCookies(true, '', false)
   }
 
   askCookies(ask, full) {
     if (ask) {
-      document.getElementById('cajaCookies').style.display = 'block';
-      if (full) document.getElementById('masCookies').checked = true;
+      document.getElementById('cajaCookies').style.display = 'block'
+      if (full) document.getElementById('masCookies').checked = true
     } else {
-      document.getElementById('cajaCookies').style.display = 'none';
-      document.getElementById('floatCookies').style.display = 'block';
+      document.getElementById('cajaCookies').style.display = 'none'
+      document.getElementById('floatCookies').style.display = 'block'
     }
   }
 
   allowCookies(allow, consent, analytics) {
-    this._cookiesAllowed = allow;
-    this.askCookies(false, false);
-    const consent_ = this.saveCookiesAllowed(allow, consent, analytics);
+    this._cookiesAllowed = allow
+    this.askCookies(false, false)
+    const consent_ = this.saveCookiesAllowed(allow, consent, analytics)
     if (consent_[1] === '1') {
-      this.addTagManager();
-      window.dataLayer = window.dataLayer || [];
-      console.log(`[z][event:consent]`);
-      window.dataLayer.push({'event': 'consent'});
+      this.addTagManager()
+      window.dataLayer = window.dataLayer || []
+      console.log(`[z][event:consent]`)
+      window.dataLayer.push({ 'event': 'consent' })
     }
   }
 
   saveCookiesAllowed(allow, consent, analytics) {
-    let consent_ = (allow) ? '1' : '0';
-    if (consent === '') consent = '00';
+    let consent_ = (allow) ? '1' : '0'
+    if (consent === '') consent = '00'
     /** analytics */
-    consent_ += (analytics) ? '1' : consent[1];
-    document.cookie = `consent=${consent_}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
-    localStorage.setItem('cookies', consent_);
-    console.log(`[z][consent:${consent_}]`);
-    analiticas.value = consent_[1] === '1';
-    return [consent_[0], consent_[1]];
+    consent_ += (analytics) ? '1' : consent[1]
+    document.cookie = `consent=${consent_}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`
+    localStorage.setItem('cookies', consent_)
+    console.log(`[z][consent:${consent_}]`)
+    analiticas.value = consent_[1] === '1'
+    return [consent_[0], consent_[1]]
   }
 
   addTagManager() {
     console.log(`[z][gtag:${this._gtm}]`);
     (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
+      w[l] = w[l] || []
       w[l].push({
         'gtm.start': new Date().getTime(),
-        event: 'gtm.js',
-      });
+        event: 'gtm.js'
+      })
       var f = d.getElementsByTagName(s)[0], j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', this._gtm);
+        dl = l != 'dataLayer' ? '&l=' + l : ''
+      j.async = true
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+      f.parentNode.insertBefore(j, f)
+    })(window, document, 'script', 'dataLayer', this._gtm)
   }
 }
 </script>
