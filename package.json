@@ -35,8 +35,7 @@
     "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
     "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^1.7.0",
-    "@rushstack/eslint-patch": "^1.6.1"
+    "yeoman-test": "^1.7.0"
   },
   "engines": {
     "npm": ">= 4.0.0"
