@@ -9,6 +9,6 @@ describe("generator-vuejs-php:app", () => {
       .withPrompts({ someAnswer: true });
   });
   it("creates files", () => {
-    assert.file(["dummyfile.txt"]);
+    assert.file(["package.json"]);
   });
 });

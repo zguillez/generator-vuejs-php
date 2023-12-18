@@ -1,6 +1,6 @@
 {
   "name": "generator-vuejs-php",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "description": "Yeoman generator for Web development with Vue.js (frontend) and Slim Framework (backend)",
   "homepage": "",
   "author": {
@@ -35,7 +35,8 @@
     "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
     "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^1.7.0"
+    "yeoman-test": "^1.7.0",
+    "@rushstack/eslint-patch": "^1.6.1"
   },
   "engines": {
     "npm": ">= 4.0.0"

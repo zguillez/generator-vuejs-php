@@ -1,0 +1,8 @@
+{
+  "languages": ["es", "en"],
+  "dictionary": [
+    ["es-fot-1", "en-fot-1"],
+    ["es-fot-2", "en-fot-2"],
+    ["es-fot-3", "en-fot-3"]
+  ]
+}

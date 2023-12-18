@@ -17,10 +17,20 @@ module.exports = class extends Generator {
       this.templatePath(`package.json`),
       this.destinationPath("package.json")
     );
+    this.fs.copy(
+      this.templatePath(`gitignore.txt`),
+      this.destinationPath(".gitignore")
+    );
     this.fs.copy(this.templatePath(`_`), this.destinationPath("_"));
   }
 
   install() {
     this.npmInstall();
+    this.log(
+      yosay(
+        "Installing dependencies. Once the installation is complete, execute\n" +
+          chalk.green(`npm run init`)
+      )
+    );
   }
 };
