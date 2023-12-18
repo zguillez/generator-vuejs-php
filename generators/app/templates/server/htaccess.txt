@@ -4,7 +4,7 @@ Options +FollowSymlinks
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-<filesMatch ".(htaccess|htpasswd|ini|txt|log|sh|json|lock|md|phar)$">
+<filesMatch ".(htaccess|htpasswd|ini|txt|log|sh|bash|json|lock|md|phar)$">
     Deny from all
 </filesMatch>
 
