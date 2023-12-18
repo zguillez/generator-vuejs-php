@@ -25,7 +25,7 @@
     "clean:staged": "lint-staged",
     "init": "npm-run-all init:*",
     "init:1": "mv _/husky .husky && git init && npm pkg set scripts.prepare=\"husky install\"",
-    "init:2": "mv _/client client && mv client/eslintrc.txt client/.eslintrc.cjs",
+    "init:2": "mv _/client client && mv client/eslintrc.txt client/.eslintrc.cjs && mv client/gitignore.txt client/.gitignore && mv client/prettierrc.json client/.prettierrc.json",
     "init:3": "mv _/server server && mv server/htaccess.txt server/.htaccess",
     "init:4": "curl -sS https://getcomposer.org/installer | php -- --install-dir=./ --filename=composer.phar && chmod +x ./composer.phar",
     "init:5": "curl --location --output ./phpunit.phar https://phar.phpunit.de/phpunit.phar && chmod +x ./phpunit.phar",
