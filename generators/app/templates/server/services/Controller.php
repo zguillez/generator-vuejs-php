@@ -34,8 +34,59 @@ class Controller
     return $response->withHeader('Content-Type', 'text/plain');
   }
 
-  protected function log()
+  public function getNow()
   {
+    return date('Y-m-d H:i:s');
+  }
+
+  public function getNowISO()
+  {
+    return date('c', time());
+  }
+
+  public function getToday()
+  {
+    return date('Y-m-d 00:00:00');
+  }
+
+  public function getDate()
+  {
+    return date('Y-m-d');
+  }
+
+  protected function isOauth(): bool
+  {
+    $token = '';
+    $isOauth = false;
+    $now = $this->getNow();
+    if (isset($_REQUEST['token']) && $_REQUEST['token'] != '') {
+      $token = $_REQUEST['token'];
+      $sql = "SELECT COUNT(*) AS total FROM oauth WHERE token='$token' AND updated_at > DATE_SUB('$now', INTERVAL 60 MINUTE)";
+      $result = $this->database->sql2Array($sql)[0]['total'];
+      if ($result > 0) {
+        $isOauth = true;
+      }
+    }
+    $this->log('oauth', $token, ['isOauth' => $isOauth]);
+
+    return $isOauth;
+  }
+
+  protected function log($ref, $log, $res)
+  {
+    $now = $this->getNow();
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $api = $_SERVER['REQUEST_URI'];
+    $method = $_SERVER['REQUEST_METHOD'];
+    $request = json_encode($_REQUEST);
+    $response = json_encode($res);
+    $sql = "INSERT INTO logs SET ref='$ref', api='$api', method='$method', log='$log', request='$request', response='$response', ip='$ip', created_at='$now'";
+    $this->database->sql2lead($sql);
+  }
+
+  protected function log2($request, $args)
+  {
+    unset($request, $args);
     if ( ! empty($_SERVER['HTTP_CLIENT_IP'])) {
       $ip = $_SERVER['HTTP_CLIENT_IP'];
     } elseif ( ! empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
@@ -96,7 +147,7 @@ class Controller
     $request_time = $_SERVER['REQUEST_TIME'] ?? "";
     //--------------------------------------------------
     $sql = <<<SQL
-INSERT IGNORE INTO logs (
+INSERT IGNORE INTO logs2 (
     ip, session, server, created_at,
     user, home, script_name, request_uri, query_string, request_method, server_protocol, gateway_interface,
     remote_port, script_filename, server_admin, context_document_root, context_prefix, request_scheme,

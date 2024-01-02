@@ -42,6 +42,7 @@ $app->get('/', services\PagesController::class);
 $app->get('/page1/', services\PagesController::class);
 $app->group('/api', function ($group) {
   $group->get('/', services\ApiController::class);
+  $group->post('/login/', services\ApiController::class.':login');
   $group->get('/{token}/', services\ApiController::class.':get_token');
   $group->post('/{token}/', services\ApiController::class.':post_token');
 });
