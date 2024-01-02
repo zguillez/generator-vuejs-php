@@ -23,6 +23,21 @@ npm run serve:server
 npm run build
 ```
 
+## Husky
+
+```npx husky add .husky/pre-commit "npm test"```
+
+```sh
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run clean
+npm run test:1
+npm run test:2
+npm run test:3
+
+```
+
 ## Logs database
 
 ```sql
